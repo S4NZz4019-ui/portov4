@@ -1,13 +1,13 @@
 # 🚀 Halo, Saya Ahmad Ikhsan Mubarok
-### [Pengembang Web Muda/RPL
+### [Pengembang Web Muda/RPL]
 
 Dimulai dari baris kode pertama hingga solusi siap pakai, saya adalah seorang profesional yang berfokus pada pembuatan aplikasi yang efisien, skalabel, dan ramah pengguna. Selamat datang di ruang digital saya!
 
 ---
 
 ## 📌 Tentang Saya
-*   💼 **Peran Saat Ini:** [Pekerjaan sekarang atau status, misal: Freelance Developer / Mahasiswa SMKN 11 Malang]
-*   🌱 **Sedang Mempelajari:** [Teknologi yang sedang dipelajari: Next.mobile app, AI Integration, ]
+*   💼 **Peran Saat Ini:** [Pekerjaan sekarang atau status : [Freelance Developer / Mahasiswa SMKN 11 Malang]
+*   🌱 **Sedang Mempelajari:** [Next.mobile app, AI Integration, ]
 
 ---
 
@@ -15,7 +15,6 @@ Dimulai dari baris kode pertama hingga solusi siap pakai, saya adalah seorang pr
 
 ### 💻 Bahasa Pemrograman & Framework
 *   **Frontend:** HTML, CSS3, JavaScript, dart, CSS
-*   **Backend:** flutter, Python
 
 *   **Tools:** Git, GitHub, Docker, VS Code, Figma
 
@@ -26,5 +25,6 @@ Saya selalu terbuka untuk kolaborasi, proyek menarik, atau sekadar diskusi tekno
 
 *   📧 **Email:** [email.@aim.sanz.999.com]
 *   🌐 **Portofolio Web:** [://ichanndev.my.id]
+*      **Whatsapp:**  [82310339247]
 ---
 🎨 *Dibuat dengan ❤️ menggunakan ....*
