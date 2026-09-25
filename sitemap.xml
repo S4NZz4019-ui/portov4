@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://sitemaps.org">
+<?xml-stylesheet type="text/css" href="https://www.xml-sitemaps.com/css/sitemap.css"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
+
   <url>
-    <loc>https://ichanndev.my.id</loc>
-    <lastmod>2026-03-08</lastmod>
-    <priority>1.00</priority>
+       <loc>https://www.ichanndev.my.id/</loc>
+       <lastmod>2026-09-25T22:34:30+00:00</lastmod>
+       <priority>1.0000</priority>
   </url>
 </urlset>
