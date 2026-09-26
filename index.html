@@ -205,12 +205,6 @@
             100% { transform: translateX(100%); }
         }
 
-        /* Cyber Grid Background
-           CATATAN PERFORMA: versi sebelumnya mengubah background-position elemen
-           fixed sebesar layar penuh pada SETIAP event scroll (via JS) — ini memaksa
-           browser me-repaint seluruh grid berkali-kali per detik dan jadi salah satu
-           penyebab utama scroll patah-patah. Sekarang gerakannya murni CSS keyframe
-           (translate3d, di-composite GPU) dan berjalan independen dari scroll. */
         .bg-grid-pattern {
             background-size: 50px 50px;
             background-image: 
@@ -299,12 +293,10 @@
             opacity: 1;
         }
 
-        /* Parallax Effect */
         .parallax-element {
             will-change: transform;
         }
 
-        /* Glow on Scroll */
         .glow-on-scroll {
             transition: box-shadow 0.6s cubic-bezier(0.23, 1, 0.320, 1), border-color 0.6s cubic-bezier(0.23, 1, 0.320, 1);
         }
@@ -316,7 +308,6 @@
             border-color: rgba(16, 185, 129, 0.6) !important;
         }
 
-        /* Scroll Progress Indicator */
         .scroll-progress-bar {
             position: fixed;
             top: 0;
@@ -328,10 +319,6 @@
             box-shadow: 0 0 20px rgba(16, 185, 129, 0.6);
             transition: width 0.1s ease-out;
         }
-
-        /* will-change hanya dipasang saat animasi berjalan (lihat .section-appear),
-           lalu dilepas otomatis setelah selesai supaya browser tidak memaksa
-           SEMUA section jadi layer GPU permanen (ini biang utama scroll patah-patah). */
 
         .section-appear {
             opacity: 0;
@@ -361,9 +348,6 @@
             to   { opacity: 1; transform: translateY(0) scale(1); will-change: auto; }
         }
 
-        /* Sengaja TIDAK memakai filter (blur/brightness) di sini — filter animation
-           jauh lebih berat untuk compositor dibanding transform+opacity, dan itulah
-           salah satu penyebab scroll terasa tersendat pada versi sebelumnya. */
         .section-recede {
             transition: transform 0.5s cubic-bezier(0.23, 1, 0.32, 1), opacity 0.5s ease-out;
             transform: scale(0.99);
@@ -385,7 +369,6 @@
             }
         }
 
-        /* Stagger effect for multiple elements */
         .stagger-item {
             opacity: 0;
             transform: translateY(30px);
@@ -404,7 +387,6 @@
         .stagger-item:nth-child(8).visible { animation-delay: 0.7s; }
         .stagger-item:nth-child(9).visible { animation-delay: 0.8s; }
 
-        /* Glassmorphism */
         .glass {
             background: rgba(15, 23, 42, 0.6);
             backdrop-filter: blur(12px);
@@ -412,7 +394,6 @@
             box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
         }
 
-        /* Text Gradient */
         .text-gradient {
             background: linear-gradient(135deg, #34d399 0%, #3b82f6 100%);
             -webkit-background-clip: text;
@@ -589,9 +570,6 @@
             position:relative; transform-style:preserve-3d;
             transition:transform .35s cubic-bezier(.2,.8,.2,1),box-shadow .35s ease,border-color .35s ease;
         }
-        /* Header mengecil pakai transform (scale), bukan ganti class padding —
-           transform di-composite GPU tanpa memicu reflow tiap event scroll.
-           (Definisi lengkap ada di bawah, digabung dengan box-shadow.) */
         #main-header>div::before{
             content:""; position:absolute; inset:-1px; border-radius:inherit; z-index:-1;
             background:linear-gradient(120deg,transparent 15%,rgba(52,211,153,.28),transparent 45%,rgba(96,165,250,.22),transparent 80%);
@@ -770,6 +748,7 @@
                         <li><a href="#biodata" class="nav-link flex items-center gap-4 px-4 py-3 rounded-lg hover:bg-white/5 text-slate-300 hover:text-white transition-all group"><i class="fa-solid fa-user w-5 text-primary"></i> Biodata</a></li>
                         <li><a href="#projects" class="nav-link flex items-center gap-4 px-4 py-3 rounded-lg hover:bg-white/5 text-slate-300 hover:text-white transition-all group"><i class="fa-solid fa-code w-5 text-primary"></i> Proyek</a></li>
                         <li><a href="#skills" class="nav-link flex items-center gap-4 px-4 py-3 rounded-lg hover:bg-white/5 text-slate-300 hover:text-white transition-all group"><i class="fa-solid fa-layer-group w-5 text-primary"></i> Stack</a></li>
+                        <li><a href="#prestasi" class="nav-link flex items-center gap-4 px-4 py-3 rounded-lg hover:bg-white/5 text-slate-300 hover:text-white transition-all group"><i class="fa-solid fa-trophy w-5 text-primary"></i> Prestasi</a></li>
                         <li><a href="#about" class="nav-link flex items-center gap-4 px-4 py-3 rounded-lg hover:bg-white/5 text-slate-300 hover:text-white transition-all group"><i class="fa-solid fa-address-card w-5 text-primary"></i> Tentang Saya</a></li>
                     </ul>
                 </div>
@@ -841,11 +820,9 @@
                         <i id="music-icon" class="fa-solid fa-play text-primary group-hover:scale-110 transition-transform"></i>
                         <span class="text-white text-xs font-mono font-bold tracking-wide">Play Music</span>
                     </button>
-                    <!-- Tambahkan URL audio anda di src -->
                     <audio id="bg-audio" loop>
-    <source src="/Where We Are (Lyrics) - One Direction [Unreleased].mp3" type="audio/mpeg">
-</audio>
-
+                        <source src="/Where We Are (Lyrics) - One Direction [Unreleased].mp3" type="audio/mpeg">
+                    </audio>
                 </div>
             </div>
 
@@ -887,7 +864,6 @@
         </section>
 
         <section id="biodata" data-theme="blue" class="py-24 px-6 relative section-appear">
-            <!-- Isi biodata (TETAP SAMA) -->
             <div class="container mx-auto max-w-5xl">
                 <div class="flex items-center gap-4 mb-16 scroll-reveal" data-aos="fade-right">
                     <span class="text-4xl text-primary font-mono">01.</span>
@@ -939,7 +915,6 @@
             </div>
         </section>
 
-        <!-- (Projects, Skills, About, Contact TETAP SAMA KARENA DI MINTA TIDAK MERUBAH) -->
         <section id="projects" data-theme="violet" class="py-24 px-6 relative bg-darker section-appear">
              <div class="container mx-auto max-w-6xl">
                 <div class="flex items-center gap-4 mb-16 scroll-reveal" data-aos="fade-right">
@@ -1075,6 +1050,133 @@
             </div>
         </section>
 
+        <!-- SECTION PRESTASI & SERTIFIKAT (FITUR BARU) -->
+        <section id="prestasi" data-theme="emerald" class="py-24 px-6 relative section-appear">
+            <div class="container mx-auto max-w-6xl">
+                <div class="flex items-center gap-4 mb-16 scroll-reveal" data-aos="fade-right">
+                    <span class="text-4xl text-primary font-mono">04.</span>
+                    <h2 class="text-3xl font-bold text-white">Penghargaan yang pernah di raih</h2>
+                    <div class="h-px bg-gradient-to-r from-primary/50 to-transparent flex-grow ml-4"></div>
+                </div>
+
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-10 items-stretch">
+                    
+                    <!-- SISI KIRI: SLIDE FOTO SERTIFIKAT (9 TEMPAT FOTO - TANPA FONT KETERANGAN) -->
+                    <div class="glass rounded-3xl p-6 border border-white/10 shadow-[0_0_30px_rgba(16,185,129,0.15)] flex flex-col justify-between relative overflow-hidden group tilt-card">
+                        <div>
+                            <div class="flex items-center justify-between mb-4 px-2">
+                                <div class="flex items-center gap-2">
+                                    <i class="fa-solid fa-certificate text-primary text-xl"></i>
+                                    <h3 class="text-white font-bold text-lg font-mono">Galeri Sertifikat</h3>
+                                </div>
+                                <div class="flex items-center gap-2">
+                                    <button id="cert-prev" class="w-9 h-9 rounded-full bg-white/10 hover:bg-primary hover:text-black text-white flex items-center justify-center transition-all border border-white/10" aria-label="Slide Sebelumnya">
+                                        <i class="fa-solid fa-chevron-left text-sm"></i>
+                                    </button>
+                                    <button id="cert-next" class="w-9 h-9 rounded-full bg-white/10 hover:bg-primary hover:text-black text-white flex items-center justify-center transition-all border border-white/10" aria-label="Slide Selanjutnya">
+                                        <i class="fa-solid fa-chevron-right text-sm"></i>
+                                    </button>
+                                </div>
+                            </div>
+
+                            <!-- Carousel Container -->
+                            <div class="relative w-full aspect-[4/3] sm:aspect-[16/10] overflow-hidden rounded-2xl bg-black/40 border border-white/5">
+                                <div id="cert-slider-track" class="flex transition-transform duration-500 ease-out h-full w-full">
+                                    <!-- 9 Tempat Foto Slide (Tanpa Font Keterangan) -->
+                                    <div class="cert-slide min-w-full h-full flex-shrink-0 relative">
+                                        <img src="/sertifikat1.jpg" onerror="this.src='https://placehold.co/800x600/0f172a/10b981?text=Sertifikat+1'" class="w-full h-full object-cover rounded-2xl" alt="Sertifikat 1">
+                                    </div>
+                                    <div class="cert-slide min-w-full h-full flex-shrink-0 relative">
+                                        <img src="/sertifikat2.jpg" onerror="this.src='https://placehold.co/800x600/0f172a/10b981?text=Sertifikat+2'" class="w-full h-full object-cover rounded-2xl" alt="Sertifikat 2">
+                                    </div>
+                                    <div class="cert-slide min-w-full h-full flex-shrink-0 relative">
+                                        <img src="/sertifikat3.jpg" onerror="this.src='https://placehold.co/800x600/0f172a/10b981?text=Sertifikat+3'" class="w-full h-full object-cover rounded-2xl" alt="Sertifikat 3">
+                                    </div>
+                                    <div class="cert-slide min-w-full h-full flex-shrink-0 relative">
+                                        <img src="/sertifikat4.jpg" onerror="this.src='https://placehold.co/800x600/0f172a/10b981?text=Sertifikat+4'" class="w-full h-full object-cover rounded-2xl" alt="Sertifikat 4">
+                                    </div>
+                                    <div class="cert-slide min-w-full h-full flex-shrink-0 relative">
+                                        <img src="/sertifikat5.jpg" onerror="this.src='https://placehold.co/800x600/0f172a/10b981?text=Sertifikat+5'" class="w-full h-full object-cover rounded-2xl" alt="Sertifikat 5">
+                                    </div>
+                                    <div class="cert-slide min-w-full h-full flex-shrink-0 relative">
+                                        <img src="/sertifikat6.jpg" onerror="this.src='https://placehold.co/800x600/0f172a/10b981?text=Sertifikat+6'" class="w-full h-full object-cover rounded-2xl" alt="Sertifikat 6">
+                                    </div>
+                                    <div class="cert-slide min-w-full h-full flex-shrink-0 relative">
+                                        <img src="/sertifikat7.jpg" onerror="this.src='https://placehold.co/800x600/0f172a/10b981?text=Sertifikat+7'" class="w-full h-full object-cover rounded-2xl" alt="Sertifikat 7">
+                                    </div>
+                                    <div class="cert-slide min-w-full h-full flex-shrink-0 relative">
+                                        <img src="/sertifikat8.jpg" onerror="this.src='https://placehold.co/800x600/0f172a/10b981?text=Sertifikat+8'" class="w-full h-full object-cover rounded-2xl" alt="Sertifikat 8">
+                                    </div>
+                                    <div class="cert-slide min-w-full h-full flex-shrink-0 relative">
+                                        <img src="/sertifikat9.jpg" onerror="this.src='https://placehold.co/800x600/0f172a/10b981?text=Sertifikat+9'" class="w-full h-full object-cover rounded-2xl" alt="Sertifikat 9">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Dots Indicator -->
+                        <div id="cert-dots" class="flex justify-center items-center gap-2 mt-4"></div>
+                    </div>
+
+                    <!-- SISI KANAN: BOX SHADOW PRESTASI TERTULIS (TANPA FOTO) -->
+                    <div class="glass rounded-3xl p-6 md:p-8 border border-primary/30 shadow-[0_0_35px_rgba(16,185,129,0.25)] hover:shadow-[0_0_50px_rgba(16,185,129,0.4)] transition-all duration-500 flex flex-col justify-between glow-on-scroll tilt-card">
+                        <div>
+                            <div class="flex items-center gap-3 mb-6 pb-4 border-b border-white/10">
+                                <div class="w-10 h-10 rounded-xl bg-amber-500/10 border border-amber-500/30 flex items-center justify-center text-amber-400">
+                                    <i class="fa-solid fa-trophy text-xl animate-bounce"></i>
+                                </div>
+                                <div>
+                                    <h3 class="text-xl font-bold text-white">Daftar Prestasi & Catatan</h3>
+                                    <p class="text-xs font-mono text-slate-400">Pencapaian Tertulis</p>
+                                </div>
+                            </div>
+
+                            <ul class="space-y-4">
+                                <li class="p-4 rounded-xl bg-white/5 border border-white/5 hover:border-primary/40 transition-all flex items-start gap-4 group">
+                                    <div class="p-2.5 rounded-lg bg-primary/10 text-primary border border-primary/20 group-hover:scale-110 transition-transform mt-0.5">
+                                        <i class="fa-solid fa-award text-lg"></i>
+                                    </div>
+                                    <div>
+                                        <span class="text-xs font-mono text-primary font-semibold">2025 • COMPETITION</span>
+                                        <h4 class="text-white font-bold group-hover:text-primary transition-colors">Juara Web Development Competition</h4>
+                                        <p class="text-slate-400 text-sm mt-1">Meraih penghargaan terbaik dalam kompetisi pembuatan website interaktif tingkat SMK/Pelajar.</p>
+                                    </div>
+                                </li>
+
+                                <li class="p-4 rounded-xl bg-white/5 border border-white/5 hover:border-primary/40 transition-all flex items-start gap-4 group">
+                                    <div class="p-2.5 rounded-lg bg-blue-500/10 text-blue-400 border border-blue-500/20 group-hover:scale-110 transition-transform mt-0.5">
+                                        <i class="fa-solid fa-medal text-lg"></i>
+                                    </div>
+                                    <div>
+                                        <span class="text-xs font-mono text-blue-400 font-semibold">2025 • CERTIFICATION</span>
+                                        <h4 class="text-white font-bold group-hover:text-blue-400 transition-colors">Frontend Web Developer Certification</h4>
+                                        <p class="text-slate-400 text-sm mt-1">Lulus sertifikasi keahlian Frontend Development dengan predikat memuaskan.</p>
+                                    </div>
+                                </li>
+
+                                <li class="p-4 rounded-xl bg-white/5 border border-white/5 hover:border-primary/40 transition-all flex items-start gap-4 group">
+                                    <div class="p-2.5 rounded-lg bg-purple-500/10 text-purple-400 border border-purple-500/20 group-hover:scale-110 transition-transform mt-0.5">
+                                        <i class="fa-solid fa-star text-lg"></i>
+                                    </div>
+                                    <div>
+                                        <span class="text-xs font-mono text-purple-400 font-semibold">2026 • FREELANCE & PROJECT</span>
+                                        <h4 class="text-white font-bold group-hover:text-purple-400 transition-colors">Best Creative Web Design Award</h4>
+                                        <p class="text-slate-400 text-sm mt-1">Apresiasi pengembangan sistem & antarmuka unik untuk proyek klien UMKM & Event.</p>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+
+                        <div class="mt-6 pt-4 border-t border-white/10 flex items-center justify-between text-xs text-slate-500 font-mono">
+                            <span class="flex items-center gap-2"><i class="fa-solid fa-check-double text-primary"></i> Terverifikasi</span>
+                            <span>Ahmad Ikhsan Mubarok</span>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+
         <section id="about" data-theme="rose" class="py-24 px-6 bg-darker relative overflow-hidden section-appear">
              <div class="absolute right-0 top-0 w-1/2 h-full bg-gradient-to-l from-white/5 to-transparent pointer-events-none"></div>
 
@@ -1154,18 +1256,6 @@
     </footer>
 
     <script>
-/* =========================================================================
-   CATATAN PERFORMA (dibaca dulu sebelum edit lebih lanjut)
-   -------------------------------------------------------------------------
-   Versi lama punya banyak `window.addEventListener('scroll', ...)` terpisah
-   yang jalan sendiri-sendiri, sebagian tanpa {passive:true} dan tanpa
-   requestAnimationFrame — ini yang bikin scroll terasa tersendat, apalagi
-   di HP. Sekarang SEMUA logika yang butuh posisi scroll digabung jadi SATU
-   listener pasif + SATU rAF loop (lihat onScrollFrame di bawah). Efek yang
-   sebelumnya pakai filter:blur() saat scroll sudah dihapus (filter jauh
-   lebih berat untuk GPU dibanding transform/opacity).
-   ========================================================================= */
-
 const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 const isFinePointer = window.matchMedia('(hover: hover) and (pointer: fine)').matches;
 
@@ -1196,9 +1286,9 @@ function hideLoadingScreen() {
 
 document.addEventListener('DOMContentLoaded', generateParticles);
 window.addEventListener('load', () => setTimeout(hideLoadingScreen, 1200));
-setTimeout(hideLoadingScreen, 2500); // fallback jika 'load' terhambat
+setTimeout(hideLoadingScreen, 2500);
 
-// ========== TEMA WARNA BERGANTI PER SECTION (event-driven, bukan scroll-driven) ==========
+// ========== TEMA WARNA BERGANTI PER SECTION ==========
 const themedSections = document.querySelectorAll('section[data-theme]');
 const rootStyle = document.documentElement.style;
 
@@ -1222,7 +1312,7 @@ const themeObserver = new IntersectionObserver((entries) => {
 
 themedSections.forEach(section => themeObserver.observe(section));
 
-// ========== NAV AKTIF MENGIKUTI SECTION (event-driven) ==========
+// ========== NAV AKTIF MENGIKUTI SECTION ==========
 const sectionNavMap = new Map();
 document.querySelectorAll('.nav-link[href^="#"]').forEach(link => {
     const id = link.getAttribute('href').slice(1);
@@ -1239,10 +1329,10 @@ const navObserver = new IntersectionObserver((entries) => {
 }, { threshold: 0.5 });
 document.querySelectorAll('main > section[id]').forEach(s => navObserver.observe(s));
 
-// ========== SCROLL REVEAL (IntersectionObserver, tanpa blur, ringan) ==========
+// ========== SCROLL REVEAL ==========
 const directionalElements = document.querySelectorAll('.section-appear');
 const standardElements = document.querySelectorAll('.scroll-reveal, .glow-on-scroll, .stagger-item');
-let scrollDirection = 'down'; // diperbarui di dalam rAF loop di bawah
+let scrollDirection = 'down';
 
 const directionalObserver = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
@@ -1266,7 +1356,7 @@ const standardObserver = new IntersectionObserver((entries) => {
 directionalElements.forEach(el => directionalObserver.observe(el));
 standardElements.forEach(el => standardObserver.observe(el));
 
-// ========== EFEK KEDALAMAN SECTION (event-driven, tanpa filter) ==========
+// ========== EFEK KEDALAMAN SECTION ==========
 const allSections = document.querySelectorAll('main > section');
 const recedeObserver = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
@@ -1277,8 +1367,6 @@ const recedeObserver = new IntersectionObserver((entries) => {
 allSections.forEach(section => recedeObserver.observe(section));
 
 // ========== PAUSE ANIMASI DEKORATIF SAAT DI LUAR LAYAR ==========
-// Lingkaran "black hole" & efek ambient terus berputar walau tidak terlihat
-// di versi lama, membebani GPU terus-menerus. Sekarang dijeda otomatis.
 const decorAnimated = document.querySelectorAll('.bh-container, .theme-glow-blob');
 if (decorAnimated.length) {
     const decorObserver = new IntersectionObserver((entries) => {
@@ -1292,10 +1380,7 @@ if (decorAnimated.length) {
     decorAnimated.forEach(el => decorObserver.observe(el));
 }
 
-// =========================================================================
-// SATU rAF LOOP UNTUK SEMUA HAL YANG BUTUH SCROLL POSITION
-// (menggantikan 5+ listener scroll terpisah pada versi lama)
-// =========================================================================
+// ========== SATU rAF LOOP UNTUK SCROLL ==========
 const scrollProgressBar = document.getElementById('scrollProgressBar');
 const mainHeader = document.getElementById('main-header');
 const parallaxElements = document.querySelectorAll('.parallax-element');
@@ -1309,21 +1394,17 @@ function onScrollFrame() {
     scrollDirection = y > lastScrollY ? 'down' : 'up';
     lastScrollY = y;
 
-    // Progress bar
     if (scrollProgressBar) {
         const trackHeight = document.documentElement.scrollHeight - window.innerHeight;
         scrollProgressBar.style.width = (trackHeight > 0 ? (y / trackHeight) * 100 : 0) + '%';
     }
 
-    // Header mengecil — hanya toggle class saat melewati ambang batas,
-    // tidak menulis style di setiap frame.
     const shouldShrink = y > 50;
     if (shouldShrink !== headerIsScrolled) {
         headerIsScrolled = shouldShrink;
         if (mainHeader) mainHeader.classList.toggle('scrolled', shouldShrink);
     }
 
-    // Parallax ringan (hanya translateY, compositor-only)
     if (!prefersReducedMotion) {
         parallaxElements.forEach(el => {
             el.style.transform = `translate3d(0, ${y * 0.15}px, 0)`;
@@ -1340,7 +1421,7 @@ window.addEventListener('scroll', () => {
     }
 }, { passive: true });
 
-onScrollFrame(); // set state awal
+onScrollFrame();
 
 // ========== MOBILE MENU ==========
 const menuBtn = document.getElementById('menu-btn');
@@ -1356,7 +1437,7 @@ if (menuBtn) menuBtn.addEventListener('click', toggleMenu);
 if (closeMenuBtn) closeMenuBtn.addEventListener('click', toggleMenu);
 navLinks.forEach(link => link.addEventListener('click', toggleMenu));
 
-// ========== SMOOTH SCROLL (anchor) ==========
+// ========== SMOOTH SCROLL ==========
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function (e) {
         const targetId = this.getAttribute('href');
@@ -1369,10 +1450,7 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     });
 });
 
-// ========== CUSTOM CURSOR (magnetic, halus dengan lerp) ==========
-// Elemennya sudah ada di HTML tapi tidak pernah digerakkan JS — sekarang aktif,
-// hanya di desktop dengan mouse presisi, dan pakai rAF (bukan langsung di
-// event mousemove) supaya tidak menambah beban ke thread utama.
+// ========== CUSTOM CURSOR ==========
 if (isFinePointer && !prefersReducedMotion) {
     const cursorDot = document.querySelector('.cursor-dot');
     const cursorRing = document.querySelector('.cursor-ring');
@@ -1405,7 +1483,7 @@ if (isFinePointer && !prefersReducedMotion) {
         });
     }
 
-    // ========== TILT 3D UNTUK KARTU (mouse-driven, bukan scroll-driven) ==========
+    // ========== TILT 3D KARTU ==========
     document.querySelectorAll('.tilt-card').forEach(card => {
         let tiltRAF = false, px = 0.5, py = 0.5;
 
@@ -1433,7 +1511,7 @@ if (isFinePointer && !prefersReducedMotion) {
         });
     });
 
-    // ========== TOMBOL MAGNETIC (CTA hero) ==========
+    // ========== TOMBOL MAGNETIC ==========
     document.querySelectorAll('#hero a.group').forEach(btn => {
         btn.addEventListener('mousemove', (e) => {
             const rect = btn.getBoundingClientRect();
@@ -1445,7 +1523,7 @@ if (isFinePointer && !prefersReducedMotion) {
     });
 }
 
-// ========== STARFIELD RINGAN DI HERO (canvas, dijeda saat tidak terlihat) ==========
+// ========== STARFIELD CANVAS ==========
 (function initStarfield() {
     const canvas = document.getElementById('universeCanvas');
     if (!canvas || prefersReducedMotion) return;
@@ -1499,17 +1577,12 @@ if (isFinePointer && !prefersReducedMotion) {
     }
 })();
 
-// ==========================================
-// FITUR BARU MULAI DARI SINI
-// ==========================================
-
 // ========== JAM WIB ==========
 function updateWIBClock() {
     const clockEl = document.getElementById('wib-clock');
     if (!clockEl) return;
     
     const now = new Date();
-    // Setting timezone ke Waktu Indonesia Barat (WIB)
     const options = { 
         timeZone: 'Asia/Jakarta', 
         hour12: false, 
@@ -1518,16 +1591,14 @@ function updateWIBClock() {
         second: '2-digit' 
     };
     
-    // Format dan ganti dot menjadi titik dua jika diperlukan (Tergantung browser regional locale)
     const timeString = now.toLocaleTimeString('id-ID', options).replace(/\./g, ':');
     clockEl.textContent = `${timeString} WIB`;
 }
 
-// Perbarui jam setiap detik
 setInterval(updateWIBClock, 1000);
 updateWIBClock();
 
-// ========== AUDIO PLAYER (BAWAH PROFILE) ==========
+// ========== AUDIO PLAYER ==========
 const musicBtn = document.getElementById('music-toggle-btn');
 const bgAudio = document.getElementById('bg-audio');
 const musicIcon = document.getElementById('music-icon');
@@ -1542,7 +1613,7 @@ if (musicBtn && bgAudio) {
             musicIcon.classList.add('fa-play');
             musicText.textContent = "Play Music";
         } else {
-            bgAudio.play().catch(error => console.log('Audio Autoplay Blocked / Belum ada src:', error));
+            bgAudio.play().catch(error => console.log('Audio Autoplay Blocked:', error));
             musicIcon.classList.remove('fa-play');
             musicIcon.classList.add('fa-pause', 'animate-pulse');
             musicText.textContent = "Pause Music";
@@ -1562,24 +1633,71 @@ if (themeToggleBtn) {
     themeToggleBtn.addEventListener('click', (e) => {
         e.preventDefault(); 
         
-        // Toggle class 'light' di tag html
         htmlEl.classList.toggle('light');
         const isLightMode = htmlEl.classList.contains('light');
         
         if (isLightMode) {
-            // Ubah icon dan gaya ke mode Terang (Sun)
             themeIcon.classList.replace('fa-moon', 'fa-sun');
             themeIcon.classList.replace('text-purple-400', 'text-yellow-400');
             themeText.textContent = 'Tema Gelap';
             themeKnob.style.transform = 'translateX(16px)';
         } else {
-            // Ubah icon dan gaya ke mode Gelap (Moon)
             themeIcon.classList.replace('fa-sun', 'fa-moon');
             themeIcon.classList.replace('text-yellow-400', 'text-purple-400');
             themeText.textContent = 'Tema Terang';
             themeKnob.style.transform = 'translateX(0)';
         }
     });
+}
+
+// ========== LOGIKA CAROUSEL SLIDER SERTIFIKAT (9 FOTO) ==========
+const certSlides = document.querySelectorAll('.cert-slide');
+const certTrack = document.getElementById('cert-slider-track');
+const certPrevBtn = document.getElementById('cert-prev');
+const certNextBtn = document.getElementById('cert-next');
+const certDotsContainer = document.getElementById('cert-dots');
+let certCurrentIndex = 0;
+
+function updateCertSlider() {
+    if (!certTrack || !certSlides.length) return;
+    certTrack.style.transform = `translateX(-${certCurrentIndex * 100}%)`;
+    
+    if (certDotsContainer) {
+        const dots = certDotsContainer.querySelectorAll('button');
+        dots.forEach((dot, idx) => {
+            if (idx === certCurrentIndex) {
+                dot.className = 'h-2 rounded-full transition-all duration-300 bg-primary w-6';
+            } else {
+                dot.className = 'h-2 rounded-full transition-all duration-300 bg-white/30 w-2';
+            }
+        });
+    }
+}
+
+if (certPrevBtn && certNextBtn && certSlides.length) {
+    certPrevBtn.addEventListener('click', () => {
+        certCurrentIndex = (certCurrentIndex - 1 + certSlides.length) % certSlides.length;
+        updateCertSlider();
+    });
+
+    certNextBtn.addEventListener('click', () => {
+        certCurrentIndex = (certCurrentIndex + 1) % certSlides.length;
+        updateCertSlider();
+    });
+
+    if (certDotsContainer) {
+        certDotsContainer.innerHTML = '';
+        certSlides.forEach((_, idx) => {
+            const dot = document.createElement('button');
+            dot.className = `h-2 rounded-full transition-all duration-300 ${idx === 0 ? 'bg-primary w-6' : 'bg-white/30 w-2'}`;
+            dot.setAttribute('aria-label', `Slide ${idx + 1}`);
+            dot.addEventListener('click', () => {
+                certCurrentIndex = idx;
+                updateCertSlider();
+            });
+            certDotsContainer.appendChild(dot);
+        });
+    }
 }
 </script>
 
